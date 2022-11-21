@@ -23,35 +23,3 @@ __Data Source:__ To get the election data, begin with the Election16 data from S
 4. Fit a complete second order model for predicting Income based on Percent college grads (BA) and TrumpWin and examine the residuals. Discuss each of the linear model conditions. 
 
 5. Perform a hypothesis test to determine the importance of just the terms that involve Percent college grads (BA) in the model constructed in question 4. List your hypotheses, p-value, and conclusion. 
-
-# ============================================
-# Set-up
-# ============================================
-```{r}
-library(Stat2Data)
-library(metRology)
-library(tidyr)
-library(corrplot)
-library(leaps)
-library(car)
-library(polynom)
-```
-
-# ============================================
-# Problems
-# ============================================
-```{r}
-data(Election16)
-
-# Question 1 (TARYN)
-
-# Question 2 (ABRAH)
-
-# Question 3 (NICK)
-
-# Question 4 (CONOR)
-
-# Question 5 (CONOR)
-```
-
-
