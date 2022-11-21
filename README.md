@@ -2,6 +2,7 @@
 Final assignment for STOR 455
 
 Work split: 
+
 __Taryn__ - Q1
 
 __Abrah__ - Q2
