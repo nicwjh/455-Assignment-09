@@ -3,8 +3,11 @@ Final assignment for STOR 455
 
 Work split: 
 __Taryn__ - Q1
+
 __Abrah__ - Q2
+
 __Nick__  - Q3
+
 __Conor__ - Q4
 
 __Situation:__ Can we predict income by education level? For this assignment, you will practice building polynomial models through predicting income by education level using data from Elections16 in the Stat2Data dataset. 
