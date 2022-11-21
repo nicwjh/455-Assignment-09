@@ -32,6 +32,24 @@ source("https://raw.githubusercontent.com/JA-McLean/STOR455/master/scripts/anova
 # Problems
 # ============================================
 ```{r}
-# abrah test
+data("Election16")
+head(Election16)
+```
+a) Create a linear model to predict income in a state based on Trump winning and one other factor.
+
+```{r}
+mod1 = lm(Income~TrumpWin + Adv + TrumpWin*Adv, data = Election16)
+plot(Income~TrumpWin, data = Election16)
+abline(mod1)
+summary(mod1)
+```
+b) Conditions ?
+```{r}
+
+```
+
+c) Make a polynomial model to predict income in a state based on Trump winning.
+```{r}
+
 ```
 
