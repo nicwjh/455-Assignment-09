@@ -1,6 +1,8 @@
 # 455-Assignment-09
 Final assignment for STOR 455
 
+STOR455_HW9 is the base code you can copy. 455_HW9_Questions are just the blank question template files.
+
 Work split: 
 
 __Taryn__ - Q1
@@ -15,7 +17,7 @@ __Situation:__ Can we predict income by education level? For this assignment, yo
  
 __Data Source:__ To get the election data, begin with the Election16 data from Stat2Data. The data contains information from all 50 states and the District of Columbia for the 2016 U.S. presidential election. It is similar to Election08 for the 2008 election. 
 
-#### Part 1. Polynomial Models: ####
+#### Polynomial Models: ####
 1. Calculate the least squares regression line (linear model) that best fits your data using Percent college grads (BA) as the predictor and Income as the response. Interpret (in context) what the slope estimate tells you about income and percent college grads. Include a summary output for your model. (__TARYN__)
 
 2. Fit a quadratic model using Percent college grads (BA) to predict Income and examine the residuals. Construct a scatterplot of the data with the quadratic fit included. Include a brief discussion of the linear model conditions. (__ABRAH__)
