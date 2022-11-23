@@ -31,25 +31,20 @@ source("https://raw.githubusercontent.com/JA-McLean/STOR455/master/scripts/anova
 # ============================================
 # Problems
 # ============================================
-```{r}
-data("Election16")
-head(Election16)
-```
-a) Create a linear model to predict income in a state based on Trump winning and one other factor.
 
+2. Fit a quadratic model using Percent college grads (BA) to predict Income and examine the residuals. Construct a scatterplot of the data with the quadratic fit included. Include a brief discussion of the linear model conditions. 
 ```{r}
-mod1 = lm(Income~TrumpWin + Adv + TrumpWin*Adv, data = Election16)
-plot(Income~TrumpWin, data = Election16)
-abline(mod1)
-summary(mod1)
-```
-b) Conditions ?
-```{r}
+data(Election16)
+plot(Income~BA, data = Election16)
+q2 = lm(Income~BA + I(BA^2), data = Election16)
 
-```
+B0 = summary(q2)$coeff[1,1]
+B1 = summary(q2)$coeff[2,1]
+B2 = summary(q2)$coeff[3,1]
 
-c) Make a polynomial model to predict income in a state based on Trump winning.
-```{r}
+curve(B0 + B1*x + B2*x^2, add = T)
 
+plot(q2)
 ```
 
+Since the scatterplot already had a generally linear relationship, our quadratic model followed. Our residuals vs fitted values has a plot with a slope close to zero and a qq-plot whose values skew to the right; this means our model does not show normal distribution.
