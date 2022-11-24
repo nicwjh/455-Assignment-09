@@ -22,7 +22,9 @@ __Data Source:__ To get the election data, begin with the Election16 data from S
 
 ~~2. Fit a quadratic model using Percent college grads (BA) to predict Income and examine the residuals. Construct a scatterplot of the data with the quadratic fit included. Include a brief discussion of the linear model conditions. (__ABRAH__)~~
 
-~~3. Did the fit improve significantly in question 2 by including the quadratic term? Justify your answer. (__NICK__) ~~
+~~3. Did the fit improve significantly in question 2 by including the quadratic term? Justify your answer. (__NICK__)~~
+
+#### Two-way ANOVA: ###
 
 4. Fit a complete second order model for predicting Income based on Percent college grads (BA) and TrumpWin and examine the residuals. Discuss each of the linear model conditions. (__CONOR__)
 
