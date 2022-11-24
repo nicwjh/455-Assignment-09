@@ -62,7 +62,7 @@ B2 = summary(modq2)$coeff[3,1]
 
 curve(B0 + B1*x + B2*x^2, add = T)
 
-plot(q2, c(1,2))
+plot(modq2, c(1,2))
 ```
 Linearity seems to be met as our residuals vs fitted plot has a slope close to zero (with some minor curvature in the middle of the data that may be due to the outliers in the middle portion of the plot). Constant variance may be an issue as there seems to be more variability in the residuals as the fitted values increase (evidenced by the fanning pattern). In the normal qq-plot, there is a right skew where there are large deviations from the qqline on the right tail of the qqplot. Normality is not met.
 
