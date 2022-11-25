@@ -19,10 +19,6 @@ __Data Source:__ To get the election data, begin with the Election16 data from S
 
 3. Did the fit improve significantly in question 2 by including the quadratic term? Justify your answer.
 
-4. Fit a complete second order model for predicting Income based on Percent college grads (BA) and TrumpWin and examine the residuals. Discuss each of the linear model conditions. 
-
-5. Perform a hypothesis test to determine the importance of just the terms that involve Percent college grads (BA) in the model constructed in question 4. List your hypotheses, p-value, and conclusion. 
-
 # ============================================
 # Set-up
 # ============================================
@@ -73,16 +69,3 @@ Linearity seems to be met as our residuals vs fitted plot has a slope close to z
 anova(modq1, modq2)
 ```
 No, it did not significantly improve fit. The nested F-test of the two models produced a p-value of 0.9769 - there is not statistically significant evidence to suggest that the coefficient of BA^2 is nonzero. 
-
-# Question 4 (CONOR)
-4. Fit a complete second order model for predicting Income based on Percent college grads (BA) and TrumpWin and examine the residuals. Discuss each of the linear model conditions. 
-```{r}
-
-```
-
-
-# Question 5 (CONOR)
-5. Perform a hypothesis test to determine the importance of just the terms that involve Percent college grads (BA) in the model constructed in question 4. List your hypotheses, p-value, and conclusion.
-```{r}
-
-```
