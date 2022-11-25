@@ -1,0 +1,92 @@
+---
+title: "Two_Way_ANOVA_Key"
+author: "C.A. Kerr"
+date: "11/24/2022"
+output: pdf_document
+---
+
+__Situation:__ For this assignment, you will practice constructing and interpreting Two Way ANOVA models. 
+
+__Data Source:__ To get the data, begin with the BirdNest data from Stat2Data. The data contains nest and species characteristics for North American passerines.
+
+#### Two Way ANOVA: ####
+1. Construct an ANOVA model for mean length of time spent in incubation (Incubate) using the location (Location) and nest type (Nesttype) as predictors (without an interaction). Include output showing the ANOVA table; state hypotheses and provide a conclusion in the context of your data. If your ANOVA model indicates there are significant differences among the incubation time means: Discuss where the significant differences occur using Tukey HSD methods. 
+
+2. Produce plots and/or summary statistics to comment on the appropriateness of the following conditions for your data: normality of residuals, and equality of the variances. 
+
+3. Construct an ANOVA model for mean length of time spent in incubation (Incubate) using the location (Location) and nest type (Nesttype) as predictors with the interaction. Include the output showing the ANOVA table; state hypotheses and provide a conclusion in the context of your data. If your ANOVA indicates that there are significant differences among the incubation time means: Discuss where the signficant differences occur using Tukey HSD methods.
+# ============================================
+# Set-up
+# ============================================
+```{r}
+library(Stat2Data)
+library(metRology)
+library(tidyr)
+library(corrplot)
+library(leaps)
+library(car)
+library(polynom)
+```
+
+# ============================================
+# Problems
+# ============================================
+```{r}
+data(BirdNest)
+head(BirdNest)
+```
+# Question 1
+1. Construct an ANOVA model for mean length of time spent in incubation (Incubate) using the location (Location) and nest type (Nesttype) as predictors (without an interaction). Include output showing the ANOVA table; state hypotheses and provide a conclusion in the context of your data. If your ANOVA model indicates there are significant differences among the incubation time means: Discuss where the significant differences occur using Tukey HSD methods. 
+```{r}
+mod1 = aov(Incubate~Location+Nesttype, data = BirdNest)
+summary(mod1)
+```
+Null hypothesis (Location): there are no differences between the means of the length of time spent in incubation of the nests located in shrubs, deciduous trees, coniferous trees, bridges, buildings, banks, snags, cliffs, and the ground. 
+Null hypothesis (Nesttype): there are no differences between the means of the length of time spent in incubation of the cup, cavity, spherical, saucer, pendant, burrow, and crevice nests. 
+
+
+Alternative hypothesis (Location): there are differences between the means of the length of time spent in incubation of the nests located in shrubs, deciduous trees, coniferous trees, bridges, buildings, banks, snags, cliffs, and the ground. 
+Alternative hypothesis (Nesttype): there are differences between the means of the length of time spent in incubation of the cup, cavity, spherical, saucer, pendant, burrow, and crevice nests.
+
+
+Conclusion (Location): given the p-value of 0.00549, we can reject the null hypothesis that there are no differences between the means of length of time spent in incubation of the nests located in shrubs, deciduous trees, coniferous trees, bridges, buildings, banks, snags, cliffs, and the ground. 
+Conclusion (Nesttype): given the p-value of 0.30682, we fail to reject the null hypothesis that there are no differences between the means of the length of time spent in incubation of the cup, cavity, spherical, saucer, pendant, and crevice nests.
+
+
+# Question 2
+2. Produce plots and/or summary statistics to comment on the appropriateness of the following conditions for your data: normality of residuals, and equality of the variances. 
+```{r}
+plot(mod1, 2)
+print('By Location')
+tapply(BirdNest$Incubate, BirdNest$Location, sd)
+print('By Nest Type')
+tapply(BirdNest$Incubate, BirdNest$Nesttype, sd)
+```
+The normality of the residuals is okay considering the relatively small sample size. There does appear to be some non-normal trends on both the lower and upper extremes. 
+
+There does appear to be some issues in the equality of variances for both _location_ and _Nesttype_. The variances of the lengths of time spent in incubation of the nests located in bridges, on cliffs, in deciduous trees, on the ground, and in a snag are all less than half the variance of the lengths of time spent in incubation of the nests located in buildings. The variances of the lengths of time spent in incubation of the spherical and saucer nests are both less than half the variance of the lengths of time spent in incubation of the burrow nests.
+
+
+
+# Question 3
+3. Construct an ANOVA model for mean length of time spent in incubation (Incubate) using the location (Location) and nest type (Nesttype) as predictors with the interaction. Include the output showing the ANOVA table; state hypotheses and provide a conclusion in the context of your data. If your ANOVA indicates that there are significant differences among the incubation time means: Discuss where the significant differences occur using Tukey HSD methods.
+```{r}
+mod2 = aov(Incubate~Location+Nesttype+Location*Nesttype, data = BirdNest)
+summary(mod2)
+```
+Null hypothesis (Location): there are no differences between the means of the length of time spent in incubation of the nests located in shrubs, deciduous trees, coniferous trees, bridges, buildings, banks, snags, cliffs, and the ground. 
+Null hypothesis (Nesttype): there are no differences between the means of the length of time spent in incubation of the cup, cavity, spherical, saucer, pendant, burrow, and crevice nests. 
+Null hypothesis (Interaction): the effects of _Location_ and _Nesttype_ on the mean length of time spent in incubation do not depend on each other. 
+
+Alternative hypothesis (Location): there are differences between the means of the length of time spent in incubation of the nests located in shrubs, deciduous trees, coniferous trees, bridges, buildings, banks, snags, cliffs, and the ground. 
+Alternative hypothesis (Nesttype): there are differences between the means of the length of time spent in incubation of the cup, cavity, spherical, saucer, pendant, burrow, and crevice nests.
+Alternative hypothesis (Interaction): the effects of _Location_ and _Nesttype_ on the mean length of time spent in incubation do depend on each other. 
+
+Conclusion (Location): given the p-value of 0.00549, we can reject the null hypothesis that there are no differences between the means of length of time spent in incubation of the nests located in shrubs, deciduous trees, coniferous trees, bridges, buildings, banks, snags, cliffs, and the ground. 
+Conclusion (Nesttype): given the p-value of 0.30682, we fail to reject the null hypothesis that there are no differences between the means of the length of time spent in incubation of the cup, cavity, spherical, saucer, pendant, and crevice nests.
+Conclusion (Interaction): given the p-value of 0.82269, we fail to reject the null hypothesis that the effects of _Location_ and _Nesttype_ on the mean length of time spent in incubation do depend on each other.
+
+```{r}
+TukeyHSD(mod2)$Location
+```
+Via a Tukey HSD test, there are significant differences between the mean length of time spent in incubation of the nests located on the ground and the mean length of time spent in incubation of the nests located in deciduous trees, and the mean length of time spent in incubation of the nests located on the ground and the mean length of time spent in incubation of the nests located in coniferous trees. 
