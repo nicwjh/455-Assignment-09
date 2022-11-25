@@ -1,5 +1,6 @@
 # 455-Assignment-09
 Final assignment for STOR 455
+
 __Situation:__ For this assignment, you will practice constructing and interpreting Two Way ANOVA models. 
 
 __Data Source:__ To get the data, begin with the BirdNest data from Stat2Data. The data contains nest and species characteristics for North American passerines.
